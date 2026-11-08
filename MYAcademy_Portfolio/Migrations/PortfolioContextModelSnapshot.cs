@@ -249,11 +249,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProjectId"));
 
-                    b.Property<string>("CategoryId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CategoryId1")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("CoverImageUrl")
@@ -274,7 +270,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasKey("ProjectId");
 
-                    b.HasIndex("CategoryId1");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Projects");
                 });
@@ -283,7 +279,7 @@ namespace MYAcademy_Portfolio.Migrations
                 {
                     b.HasOne("MYAcademy_Portfolio.Entities.Category", "Category")
                         .WithMany("Projects")
-                        .HasForeignKey("CategoryId1")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
