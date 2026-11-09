@@ -1,4 +1,5 @@
-﻿@model List<MYAcademy_Portfolio.Entities.Project>
+﻿
+@model List<MYAcademy_Portfolio.Entities.Project>
 
 <!-- Portfolio Projects Section -->
 <section id="projects">
@@ -19,55 +20,60 @@
 
         <!-- Project Cards Grid -->
         <div class="row g-4" id="projectGrid">
-            @foreach(var item in Model)
+            @foreach (var item in Model)
             {
-                         
-            <!-- 1. TaskFlow -->
-            <div class="col-lg-4 col-md-6 project-item" data-category="web-app">
-                <div class="project-card reveal-on-scroll">
-                    <div class="project-thumb">
-                        <div class="project-thumb-preview">
-                            <div class="preview-header">
-                                <div class="preview-dot" style="background:#FF5F56;"></div>
-                                <div class="preview-dot" style="background:#FFBD2E;"></div>
-                                <div class="preview-dot" style="background:#27C93F;"></div>
-                                <span class="ms-auto text-muted" style="font-size:0.6rem;">TaskFlow Kanban</span>
+                <div class="col-lg-4 col-md-6 project-item" data-category="web-app">
+                    <div class="project-card reveal-on-scroll">
+
+                        <!-- Project Image -->
+                        <div class="project-thumb"
+                             style="width:100%; aspect-ratio:16/9; overflow:hidden;">
+
+                            <img src="@item.CoverImageUrl"
+                                 alt="@item.Title"
+                                 style="width:100%;
+                                        height:100%;
+                                        object-fit:cover;
+                                        display:block;" />
+                        </div>
+
+                        <!-- Project Content -->
+                        <div class="project-body">
+                            <span class="project-category-badge">@item.Category.CategoryName</span>
+
+                            <h3 class="project-title">@item.Title</h3>
+
+                            <p class="project-desc">@item.Description</p>
+
+                            <!-- Technologies -->
+                            <div class="mb-3">
+                                <span class="tech-tag">ASP.NET Core</span>
+                                <span class="tech-tag">EF Core</span>
+                                <span class="tech-tag">SQL Server</span>
+                                <span class="tech-tag">Bootstrap</span>
                             </div>
-                            <div class="preview-body">
-                                <div class="preview-skeleton-bar" style="width: 40%; background: var(--accent-purple);"></div>
-                                <div class="d-flex gap-2 my-1">
-                                    <div class="p-1 rounded bg-light border flex-fill">Yapılacaklar</div>
-                                    <div class="p-1 rounded bg-light border flex-fill">Süreçte</div>
-                                    <div class="p-1 rounded bg-light border flex-fill">Tamamlandı</div>
-                                </div>
-                                <div class="preview-skeleton-bar" style="width: 75%;"></div>
+
+                            <!-- Project Links -->
+                            <div class="project-footer">
+                                <a href="@item.GithubUrl"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="project-link-btn">
+                                    <i class="bi bi-github"></i> GitHub
+                                </a>
+
+                                <a href="#projects"
+                                   class="project-link-btn text-primary">
+                                    <i class="bi bi-box-arrow-up-right"></i> Canlı Demo
+                                </a>
                             </div>
                         </div>
-                    </div>
-                    <div class="project-body">
-                        <span class="project-category-badge">Web Application</span>
-                        <h3 class="project-title">@item.Title</h3>
-                        <p class="project-desc">@item.Description.</p>
-                        <div class="mb-3">
-                            <span class="tech-tag">ASP.NET Core</span>
-                            <span class="tech-tag">EF Core</span>
-                            <span class="tech-tag">SQL Server</span>
-                            <span class="tech-tag">Bootstrap</span>
-                        </div>
-                        <div class="project-footer">
-                            <a href="@item.GithubUrl" target="_blank" rel="noopener" class="project-link-btn">
-                                <i class="bi bi-github"></i> GitHub
-                            </a>
-                            <a href="#projects" class="project-link-btn text-primary">
-                                <i class="bi bi-box-arrow-up-right"></i> Canlı Demo
-                            </a>
-                        </div>
+
                     </div>
                 </div>
-            </div>
-
             }
         </div>
     </div>
 </section>
+
 
